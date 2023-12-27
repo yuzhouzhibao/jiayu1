@@ -1,94 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Level Selector</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(200deg, #fda09b, #918ef9);
-      overflow: hidden; /* 隐藏滚动条 */
-    }
-    .container {
-      width: 300px;
-      height: 300px;
-      overflow: hidden;
-      position: relative;
-      perspective: 1000px;
-    }
-    .card-wrapper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      transition: transform 0.5s ease;
-    }
-    .card {
-      width: 100%;
-      height: 100%;
-      padding: 20px;
-      border-radius: 20px;
-      background-color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      transform-style: preserve-3d;
-      position: absolute;
-      backface-visibility: hidden;
-      transition: transform 0.5s ease;
-    }
-    .card:nth-child(1) { transform: translateZ(0px); }
-    .card:nth-child(2) { transform: translateZ(-100px); }
-    .card:nth-child(3) { transform: translateZ(-200px); }
-    /* Add more cards here */
-  </style>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>垂直卡片滑动动画</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container" onwheel="scrollCards(event)">
-    <div class="card-wrapper" id="cardWrapper">
-      <div class="card">
-        <h2>Level 1</h2>
-        <p>Easy</p>
-      </div>
-      <div class="card">
-        <h2>Level 2</h2>
-        <p>Medium</p>
-      </div>
-      <div class="card">
-        <h2>Level 3</h2>
-        <p>Hard</p>
-      </div>
-      <!-- Add more cards here -->
+    <div class="container">
+        <!-- --d是自定义属性,可通过var函数对其调用 -->
+        <div class="card" style="--d:-1;">
+            <div class="content">
+                <div class="img">
+                    <img src="../images/op/1.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>路飞</span>
+                    <p>草帽海贼团船长</p>
+                </div>
+            </div>
+            <a href="#">关注</a>
+        </div>
+        <div class="card" style="--d:0;">
+            <div class="content">
+                <div class="img">
+                    <img src="../images/op/2.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>索隆</span>
+                    <p>草帽海贼团剑士</p>
+                </div>
+            </div>
+            <a href="#">关注</a>
+        </div>
+        <div class="card" style="--d:1;">
+            <div class="content">
+                <div class="img">
+                    <img src="../images/op/3.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>山治</span>
+                    <p>草帽海贼团厨师</p>
+                </div>
+            </div>
+            <a href="#">关注</a>
+        </div>
+        <div class="card" style="--d:2;">
+            <div class="content">
+                <div class="img">
+                    <img src="../images/op/4.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>娜美</span>
+                    <p>草帽海贼团航海士</p>
+                </div>
+            </div>
+            <a href="#">关注</a>
+        </div>
+        <div class="card" style="--d:3;">
+            <div class="content">
+                <div class="img">
+                    <img src="../images/op/5.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <span>乌索普</span>
+                    <p>草帽海贼团狙击手</p>
+                </div>
+            </div>
+            <a href="#">关注</a>
+        </div>
     </div>
-  </div>
-
-  <script>
-    let currentCard = 0;
-    let cardWrapper = document.getElementById('cardWrapper');
-    const cardCount = document.querySelectorAll('.card').length;
-
-    function scrollCards(event) {
-      if (event.deltaY < 0) {
-        currentCard = Math.min(currentCard + 1, cardCount - 1);
-      } else {
-        currentCard = Math.max(currentCard - 1, 0);
-      }
-
-      let offset = currentCard * -100;
-      cardWrapper.style.transform = `translateY(${offset}%)`;
-      event.preventDefault();
-    }
-  </script>
 </body>
+
 </html>
