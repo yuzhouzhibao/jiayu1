@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vertical Card Slider</title>
+  <title>Level Selector</title>
   <style>
     * {
       margin: 0;
@@ -20,19 +20,22 @@
     .container {
       width: 300px;
       height: 300px;
-      position: relative;
       overflow: hidden;
+      position: relative;
+      perspective: 1000px;
     }
     .card-wrapper {
       width: 100%;
-      height: 300%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
       position: absolute;
       top: 0;
-      transition: transform 0.5s ease; /* 添加过渡效果 */
+      transition: transform 0.5s ease;
     }
     .card {
-      width: 80%;
-      height: 33.33%;
+      width: 100%;
+      height: 100%;
       padding: 20px;
       border-radius: 20px;
       background-color: #ffffff;
@@ -40,31 +43,31 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      opacity: 0;
-      transition: opacity 0.5s ease; /* 添加过渡效果 */
+      transform-style: preserve-3d;
+      position: absolute;
+      backface-visibility: hidden;
+      transition: transform 0.5s ease;
     }
-    .card:nth-child(1) { transition-delay: 0s; }
-    .card:nth-child(2) { transition-delay: 0.2s; }
-    .card:nth-child(3) { transition-delay: 0.4s; }
-    /* 移除自动播放的部分 */
+    .card:nth-child(1) { transform: translateZ(0px); }
+    .card:nth-child(2) { transform: translateZ(-100px); }
+    .card:nth-child(3) { transform: translateZ(-200px); }
+    /* Add more cards here */
   </style>
 </head>
 <body>
   <div class="container" onwheel="scrollCards(event)">
     <div class="card-wrapper" id="cardWrapper">
       <div class="card">
-        <div class="img"><img src="1.png" alt="Image 1"></div>
-        <div class="detail">
-          <span>王婉儿（Anna）</span>
-          <p>寻找真爱的微笑使者。</p>
-        </div>
-        <a href="#">注目</a>
+        <h2>Level 1</h2>
+        <p>Easy</p>
       </div>
       <div class="card">
-        <!-- Content for second card -->
+        <h2>Level 2</h2>
+        <p>Medium</p>
       </div>
       <div class="card">
-        <!-- Content for third card -->
+        <h2>Level 3</h2>
+        <p>Hard</p>
       </div>
       <!-- Add more cards here -->
     </div>
@@ -77,9 +80,9 @@
 
     function scrollCards(event) {
       if (event.deltaY < 0) {
-        currentCard = (currentCard - 1 + cardCount) % cardCount;
+        currentCard = Math.min(currentCard + 1, cardCount - 1);
       } else {
-        currentCard = (currentCard + 1) % cardCount;
+        currentCard = Math.max(currentCard - 1, 0);
       }
 
       let offset = currentCard * -100;
