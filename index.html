@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Vertical Slider</title>
+<title>Vertical Text Slider</title>
 <style>
   .slider {
-    width: 300px; /* 设置轮播容器的宽度 */
-    height: 200px; /* 设置轮播容器的高度 */
+    width: 200px; /* 设置轮播容器的宽度 */
+    height: 150px; /* 设置轮播容器的高度 */
     overflow: hidden; /* 隐藏超出容器的内容 */
     position: relative;
+    border: 1px solid #ccc; /* 边框样式 */
   }
 
   .slide {
@@ -18,6 +19,9 @@
     position: absolute;
     top: 0;
     left: 0;
+    padding: 20px; /* 调整文本内边距 */
+    box-sizing: border-box;
+    font-size: 18px; /* 文字大小 */
   }
 
   .active {
@@ -29,13 +33,13 @@
 
 <div class="slider">
   <div class="slide active">
-    <img src="image1.jpg" alt="Image 1">
+    <p>Slide 1: This is the first slide.</p>
   </div>
   <div class="slide">
-    <img src="image2.jpg" alt="Image 2">
+    <p>Slide 2: Here comes the second slide.</p>
   </div>
   <div class="slide">
-    <img src="image3.jpg" alt="Image 3">
+    <p>Slide 3: And this is the third slide.</p>
   </div>
 </div>
 
