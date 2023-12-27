@@ -1,59 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Vertical Text Slider</title>
-<style>
-  .slider {
-    width: 200px; /* 设置轮播容器的宽度 */
-    height: 150px; /* 设置轮播容器的高度 */
-    overflow: hidden; /* 隐藏超出容器的内容 */
-    position: relative;
-    border: 1px solid #ccc; /* 边框样式 */
-  }
-
-  .slide {
-    width: 100%;
-    height: 100%;
-    display: none; /* 隐藏轮播项 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px; /* 调整文本内边距 */
-    box-sizing: border-box;
-    font-size: 18px; /* 文字大小 */
-  }
-
-  .active {
-    display: block; /* 显示当前活动的轮播项 */
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(200deg, #fda09b, #918ef9);
+    }
+    .container {
+      width: 500px;
+      height: 300px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      width: 430px;
+      height: 100px;
+      padding: 0 20px;
+      border-radius: 100px 20px 20px 100px;
+      background-color: #ffffff;
+      position: absolute;
+      opacity: 0;
+      animation: animate 10s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card .img {
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      background-color: #ffffff;
+      padding: 5px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    .card .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .card .content {
+      display: flex;
+      align-items: center;
+    }
+    .card .detail span {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .card a {
+      font-size: 14px;
+      text-decoration: none;
+      background: linear-gradient(to bottom, #fbc5ed, #a6clee);
+      padding: 7px 18px;
+      color: #ffffff;
+      border-radius: 25px;
+      margin-left: 30px;
+    }
+    @keyframes animate {
+      0% {
+        opacity: 1;
+        transform: translateY(100%) scale(0.5);
+      }
+      5%, 20% {
+        opacity: 0.4;
+        transform: translateY(100%) scale(0.7);
+      }
+      25%, 40% {
+        opacity: 1;
+        transform: translateY(0%) scale(1);
+      }
+      45%, 60% {
+        opacity: 0.4;
+        transform: translateY(-100%) scale(0.7);
+      }
+      65%, 100% {
+        opacity: 0;
+        transform: translateY(-100%) scale(0.5);
+      }
+    }
+    .container:hover .card {
+      animation-play-state: paused;
+    }
+  </style>
 </head>
 <body>
-
-<div class="slider">
-  <div class="slide active">
-    <p>Slide 1: This is the first slide.</p>
+  <div class="container">
+    <div class="card" style="--d:-1;">
+      <div class="content">
+        <div class="img"><img src="1.png" alt="Image 1"></div>
+        <div class="detail">
+          <span>王婉儿（Anna）</span>
+          <p>寻找真爱的微笑使者。</p>
+        </div>
+      </div>
+      <a href="#">注目</a>
+    </div>
+    <!-- Repeat similar card structures for other cards -->
   </div>
-  <div class="slide">
-    <p>Slide 2: Here comes the second slide.</p>
-  </div>
-  <div class="slide">
-    <p>Slide 3: And this is the third slide.</p>
-  </div>
-</div>
-
-<script>
-  let slides = document.querySelectorAll('.slide');
-  let currentSlide = 0;
-  const slideInterval = setInterval(nextSlide, 2000); // 每隔2秒切换轮播项
-
-  function nextSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }
-</script>
-
+  <div class="register"></div>
+  <script>
+    window.onload = () => {
+      let searchIcon = document.querySelector("icon");
+      let clearIcon = document.querySelector(".clear");
+      let searchBar = document.querySelector(".searchBar");
+      let inp = document.querySelector(".inp");
+      searchIcon.addEventListener("click", () => {
+        searchBar.classList.toggle("changeWidth");
+      });
+      clearIcon.addEventListener("click", () => {
+        inp.value = "";
+      });
+    };
+  </script>
 </body>
 </html>
