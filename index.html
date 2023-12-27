@@ -203,6 +203,29 @@
             cardWrapper.style.transform = `translateY(${offset}%)`;
             event.preventDefault();
         }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        function removeAutoScroll() {
+            stopAutoScroll();
+            cardWrapper.removeEventListener('mouseenter', stopAutoScroll);
+            cardWrapper.removeEventListener('mouseleave', startAutoScroll);
+        }
+
+        cardWrapper.addEventListener('mouseenter', stopAutoScroll);
+        cardWrapper.addEventListener('mouseleave', startAutoScroll);
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                currentCard = Math.min(currentCard + 1, 4);
+                let offset = currentCard * -100;
+                cardWrapper.style.transform = `translateY(${offset}%)`;
+            }, 3000);
+        }
+
+        startAutoScroll();
     </script>
 </body>
 
