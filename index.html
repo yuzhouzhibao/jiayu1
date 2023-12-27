@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Vertical Card Slider</title>
   <style>
     * {
       margin: 0;
@@ -15,119 +15,80 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(200deg, #fda09b, #918ef9);
+      overflow: hidden; /* 隐藏滚动条 */
     }
     .container {
-      width: 500px;
+      width: 300px;
       height: 300px;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+    }
+    .card-wrapper {
+      width: 100%;
+      height: 300%;
+      position: absolute;
+      top: 0;
+      transition: transform 0.5s ease; /* 添加过渡效果 */
     }
     .card {
-      width: 430px;
-      height: 100px;
-      padding: 0 20px;
-      border-radius: 100px 20px 20px 100px;
+      width: 80%;
+      height: 33.33%;
+      padding: 20px;
+      border-radius: 20px;
       background-color: #ffffff;
-      position: absolute;
-      opacity: 0;
-      animation: animate 10s linear infinite;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 0.5s ease; /* 添加过渡效果 */
     }
-    .card .img {
-      width: 90px;
-      height: 90px;
-      position: absolute;
-      left: 0;
-      top: 6px;
-      background-color: #ffffff;
-      padding: 5px;
-      border-radius: 50%;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-    .card .img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-    .card .content {
-      display: flex;
-      align-items: center;
-    }
-    .card .detail span {
-      display: block;
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .card a {
-      font-size: 14px;
-      text-decoration: none;
-      background: linear-gradient(to bottom, #fbc5ed, #a6clee);
-      padding: 7px 18px;
-      color: #ffffff;
-      border-radius: 25px;
-      margin-left: 30px;
-    }
-    @keyframes animate {
-      0% {
-        opacity: 1;
-        transform: translateY(100%) scale(0.5);
-      }
-      5%, 20% {
-        opacity: 0.4;
-        transform: translateY(100%) scale(0.7);
-      }
-      25%, 40% {
-        opacity: 1;
-        transform: translateY(0%) scale(1);
-      }
-      45%, 60% {
-        opacity: 0.4;
-        transform: translateY(-100%) scale(0.7);
-      }
-      65%, 100% {
-        opacity: 0;
-        transform: translateY(-100%) scale(0.5);
-      }
-    }
-    .container:hover .card {
-      animation-play-state: paused;
+    .card:nth-child(1) { transition-delay: 0s; }
+    .card:nth-child(2) { transition-delay: 0.2s; }
+    .card:nth-child(3) { transition-delay: 0.4s; }
+    /* 添加鼠标滚轮事件 */
+    .container:hover .card-wrapper {
+      transition: transform 0.5s ease;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card" style="--d:-1;">
-      <div class="content">
+  <div class="container" onwheel="scrollCards(event)">
+    <div class="card-wrapper" id="cardWrapper">
+      <div class="card">
         <div class="img"><img src="1.png" alt="Image 1"></div>
         <div class="detail">
           <span>王婉儿（Anna）</span>
           <p>寻找真爱的微笑使者。</p>
         </div>
+        <a href="#">注目</a>
       </div>
-      <a href="#">注目</a>
+      <div class="card">
+        <!-- Content for second card -->
+      </div>
+      <div class="card">
+        <!-- Content for third card -->
+      </div>
+      <!-- Add more cards here -->
     </div>
-    <!-- Repeat similar card structures for other cards -->
   </div>
-  <div class="register"></div>
+
   <script>
-    window.onload = () => {
-      let searchIcon = document.querySelector("icon");
-      let clearIcon = document.querySelector(".clear");
-      let searchBar = document.querySelector(".searchBar");
-      let inp = document.querySelector(".inp");
-      searchIcon.addEventListener("click", () => {
-        searchBar.classList.toggle("changeWidth");
-      });
-      clearIcon.addEventListener("click", () => {
-        inp.value = "";
-      });
-    };
+    let currentCard = 0;
+    let cardWrapper = document.getElementById('cardWrapper');
+    const cardCount = document.querySelectorAll('.card').length;
+
+    function scrollCards(event) {
+      if (event.deltaY < 0) {
+        currentCard = (currentCard - 1 + cardCount) % cardCount;
+      } else {
+        currentCard = (currentCard + 1) % cardCount;
+      }
+
+      let offset = currentCard * -100;
+      cardWrapper.style.transform = `translateY(${offset}%)`;
+      event.preventDefault();
+    }
   </script>
 </body>
 </html>
