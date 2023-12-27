@@ -41,10 +41,11 @@
             padding: 0 20px;
             border-radius: 100px 20px 20px 100px;
             opacity: 0;
+            transition: transform 0.5s ease;
         }
 
         .container:hover .card {
-            animation-play-state: paused;
+            transition: none;
         }
 
         .card .content {
@@ -89,37 +90,6 @@
             padding: 7px 18px;
             color: #fff;
             border-radius: 25px;
-        }
-
-        @keyframes animate {
-            0% {
-                opacity: 0;
-                transform: translateY(100%) scale(0.5);
-            }
-
-            5%,
-            20% {
-                opacity: 0.4;
-                transform: translateY(100%) scale(0.7);
-            }
-
-            25%,
-            40% {
-                opacity: 1;
-                transform: translateY(0%) scale(1);
-            }
-
-            45%,
-            60% {
-                opacity: 0.4;
-                transform: translateY(-100%) scale(0.7);
-            }
-
-            65%,
-            100% {
-                opacity: 0;
-                transform: translateY(-100%) scale(0.5);
-            }
         }
     </style>
 </head>
@@ -204,28 +174,12 @@
             event.preventDefault();
         }
 
-        function stopAutoScroll() {
-            clearInterval(autoScrollInterval);
-        }
-
-        function removeAutoScroll() {
-            stopAutoScroll();
-            cardWrapper.removeEventListener('mouseenter', stopAutoScroll);
-            cardWrapper.removeEventListener('mouseleave', startAutoScroll);
-        }
-
-        cardWrapper.addEventListener('mouseenter', stopAutoScroll);
-        cardWrapper.addEventListener('mouseleave', startAutoScroll);
-
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-                currentCard = Math.min(currentCard + 1, 4);
-                let offset = currentCard * -100;
-                cardWrapper.style.transform = `translateY(${offset}%)`;
-            }, 3000);
-        }
-
-        startAutoScroll();
+        // 阻止默认滚动行为，以免影响整体滚动
+        window.addEventListener("wheel", function (e) {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 
