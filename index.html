@@ -1,17 +1,131 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
     <title>垂直卡片滑动动画</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(200deg, #b1f4cf, #9890e3);
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card {
+            position: absolute;
+            background-color: #fff;
+            width: 430px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border-radius: 100px 20px 20px 100px;
+            opacity: 0;
+            animation: animate 15s linear infinite;
+        }
+
+        .container:hover .card {
+            animation-play-state: paused;
+        }
+
+        .card .content {
+            display: flex;
+            align-items: center;
+        }
+
+        .card .img {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card .img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .card .detail {
+            margin-left: 100px;
+        }
+
+        .card .detail span {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card a {
+            font-size: 14px;
+            text-decoration: none;
+            background: linear-gradient(to bottom, #fbc5ed, #a6c1ee);
+            padding: 7px 18px;
+            color: #fff;
+            border-radius: 25px;
+        }
+
+        @keyframes animate {
+            0% {
+                opacity: 0;
+                transform: translateY(100%) scale(0.5);
+            }
+
+            5%,
+            20% {
+                opacity: 0.4;
+                transform: translateY(100%) scale(0.7);
+            }
+
+            25%,
+            40% {
+                opacity: 1;
+                transform: translateY(0%) scale(1);
+            }
+
+            45%,
+            60% {
+                opacity: 0.4;
+                transform: translateY(-100%) scale(0.7);
+            }
+
+            65%,
+            100% {
+                opacity: 0;
+                transform: translateY(-100%) scale(0.5);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- --d是自定义属性,可通过var函数对其调用 -->
+    <div class="container" onwheel="scrollCards(event)">
         <div class="card" style="--d:-1;">
             <div class="content">
                 <div class="img">
@@ -73,6 +187,23 @@
             <a href="#">关注</a>
         </div>
     </div>
+
+    <script>
+        let currentCard = 0;
+        let cardWrapper = document.querySelector('.container');
+
+        function scrollCards(event) {
+            if (event.deltaY < 0) {
+                currentCard = Math.min(currentCard + 1, 4);
+            } else {
+                currentCard = Math.max(currentCard - 1, 0);
+            }
+
+            let offset = currentCard * -100;
+            cardWrapper.style.transform = `translateY(${offset}%)`;
+            event.preventDefault();
+        }
+    </script>
 </body>
 
 </html>
