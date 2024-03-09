@@ -1,0 +1,212 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+    cursor: none;
+  }
+  .mouse{
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position:fixed;
+    left: -200px;
+    z-index: 1000;
+    pointer-events: none;
+}
+  /* Estilos para el título principal */
+  h1 {
+    text-align: center;
+    color: #3498db;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los párrafos con efecto de escritura */
+  .typing-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #333;
+    white-space: nowrap; /* Evita el salto de línea */
+    border-right: 2px solid #3498db; /* Efecto de cursor parpadeante */
+    font-size: 18px;
+    overflow: hidden; /* Oculta el texto que no está visible inicialmente */
+    display: inline-block; /* Para que el efecto de escritura funcione correctamente */
+  }
+  
+  /* Animación de escritura */
+  @keyframes typing {
+    from {
+      width: 0; /* Comienza con ningún texto visible */
+    }
+    to {
+      width: 100%; /* Se expande hasta mostrar todo el texto */
+    }
+  }
+  
+  /* Efecto de cursor parpadeante */
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent; /* Inicialmente invisible */
+    }
+    50% {
+      border-color: #3498db; /* Mitad del tiempo visible */
+    }
+  }
+  
+  /* Estilos para los enlaces */
+  a {
+    color: #e74c3c;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    color: #c0392b;
+    text-decoration: underline;
+  }
+  
+  /* Estilos para las imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  img:hover {
+    transform: scale(1.1);
+  }
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Estilos para el título principal */
+  h1 {
+    text-align: center;
+    color: #3498db;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los párrafos con efecto de escritura */
+  .typing-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #333;
+    white-space: nowrap; /* Evita el salto de línea */
+    border-right: 2px solid #3498db; /* Efecto de cursor parpadeante */
+    font-size: 18px;
+    overflow: hidden; /* Oculta el texto que no está visible inicialmente */
+    display: inline-block; /* Para que el efecto de escritura funcione correctamente */
+    animation: typing 4s steps(40), blink-caret 0.75s step-end;
+  }
+  
+  /* Animación de escritura */
+  @keyframes typing {
+    from {
+      width: 0; /* Comienza con ningún texto visible */
+    }
+    to {
+      width: 100%; /* Se expande hasta mostrar todo el texto */
+    }
+  }
+  
+  /* Efecto de cursor parpadeante */
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent; /* Inicialmente invisible */
+    }
+    50% {
+      border-color: #3498db; /* Mitad del tiempo visible */
+    }
+  }
+  
+  /* Estilos para los enlaces */
+  a {
+    color: #e74c3c;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    color: #c0392b;
+    text-decoration: underline;
+  }
+  
+  /* Estilos para las imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: 0; /* 将左边距设置为0，实现靠左对齐 */
+    margin-right: auto; /* 将右边距设置为auto */
+    transition: transform 0.3s ease-in-out;
+}
+
+  
+  img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Estilos para los botones */
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .button-link {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .button-link:hover {
+    background-color: #2980b9;
+  }
+/* Estilos para la cola del ratón */
+/* Estilos para la cola del ratón */
+  /* Estilos para la cola del ratón */
+/* Estilos para la cola del ratón */
+.mouse-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 6px;
+    height: 6px;
+    background-color: #3498db; /* Color azul */
+    border-radius: 50%;
+    opacity: 0; /* Comienza invisible */
+    transition: opacity 0.5s;
+    position: absolute;
+  }
+  
+  
+  
+  @keyframes mouseTrailFade {
+    from {
+      opacity: 2;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  
+  

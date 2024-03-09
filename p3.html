@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlaces HTML</title>
+  <link rel="stylesheet" href="p3.css">
+  <link rel="stylesheet" href="scroll-animation.css"> <!-- Nuevo enlace para los estilos de animación -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #3498db;
+      text-align: center;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    a {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #3498db;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+      text-align: center;
+      opacity: 0; /* Agregamos una opacidad inicial */
+      transform: translateY(20px); /* Movemos los elementos hacia abajo */
+    }
+
+    a:hover {
+      background-color: #2980b9;
+    }
+
+    img {
+  display: block;
+  margin: 0 auto;
+  max-width: 500px; /* 设置图片最大宽度为500px */
+  max-height: 400px; /* 设置图片最大高度为400px */
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+    /* Agregamos una clase para mostrar elementos cuando están en el viewport */
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>Enlaces HTML</h1>
+  <h2>5 Enlaces que vamos a visitar:</h2>
+
+  <a href="https://www.w3schools.com/">Visita nuestro tutorial de HTML</a>
+
+  <a href="https://www.marca.com/">Marca</a>
+
+  <a href="google.com/">Google</a>
+
+  <a href="https://elpais.com/">El País</a>
+
+  <a href="https://as.com/">AS</a>
+
+  <a href="https://www.apple.com/es/store?afid=p238%7CsqBqp3TiI-dc_mtid_187079nc38483_pcrid_674906333249_pgrid_16626051515_pntwk_g_pchan__pexid__&cid=aos-es-kwgo-brand--slid--bran-product-">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="APPLE">
+  </a>
+
+  <a href="https://www.fcbarcelona.es/es/">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png" alt="BARSA LOGO">
+  </a>
+
+  <a href="https://www.realmadrid.com">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" alt="MADRID LOGO">
+  </a>
+
+  
+  <script src="p3.js"></script>
+  
+</body>
+
+</html>
