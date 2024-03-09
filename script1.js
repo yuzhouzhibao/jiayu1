@@ -155,22 +155,22 @@ for (var i = 0; i < items.length; i++) {
                 window.location.href = 'p1.html';
                 break;
             case 2:
-                window.location.href = 'P2.html';
+                window.location.href = 'p2.html';
                 break;
             case 3:
-                window.location.href = 'P3.html';
+                window.location.href = 'p3.html';
                 break;
             case 4:
-                window.location.href = 'P4.html';
+                window.location.href = 'p4.html';
                 break;
             case 5:
-                window.location.href = 'P5.html';
+                window.location.href = 'p5.html';
                 break;
             case 6:
-                window.location.href = 'P7.html';
+                window.location.href = 'p7.html';
                 break;
             case 7:
-                window.location.href = 'P8.html';
+                window.location.href = 'p8.html';
                 break;
             
             // 添加其他轮播项对应的页面跳转
